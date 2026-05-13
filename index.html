@@ -1,46 +1,338 @@
-```html
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.M Nasir Uddin | Portfolio</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G.M Nasir Uddin | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #131920;
+      --border: #1e2a36;
+      --accent: #00e5c0;
+      --accent2: #ff6b35;
+      --text: #d6e4f0;
+      --muted: #5a7a94;
+      --heading: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: .5;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none; z-index: 0; opacity: .4;
+    }
+
+    .blob {
+      position: fixed;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,192,.12) 0%, transparent 70%);
+      top: -150px; right: -150px;
+      pointer-events: none; z-index: 0;
+      animation: drift 10s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(-60px, 80px) scale(1.1); }
+    }
+
+    .wrapper {
+      position: relative; z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+    }
+
+    .hero {
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 60px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(0,229,192,.08);
+      border: 1px solid rgba(0,229,192,.25);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--heading);
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 420px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      animation: fadeUp .8s ease both;
+    }
+    .section:nth-child(2) { animation-delay: .1s; }
+    .section:nth-child(3) { animation-delay: .2s; }
+    .section:nth-child(4) { animation-delay: .3s; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--heading);
+      margin: 0;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+    }
+    .edu-card:last-child::before { background: var(--accent2); }
+    .edu-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .edu-card:last-child:hover { border-color: var(--accent2); }
+
+    .edu-type {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .edu-card:last-child .edu-type { color: var(--accent2); }
+
+    .edu-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--heading);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .edu-degree {
+      color: var(--muted);
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: var(--text);
+      transition: all .25s;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      background: rgba(0,229,192,.07);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .skill-tag .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 22px;
+      transition: border-color .3s;
+    }
+    .contact-row:hover { border-color: var(--accent); }
+
+    .contact-icon {
+      width: 36px; height: 36px;
+      border-radius: 4px;
+      background: rgba(0,229,192,.1);
+      border: 1px solid rgba(0,229,192,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    footer span { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
 <body>
 
-    <h1>G.M NASIR UDDIN</h1>
+<div class="blob"></div>
 
-    <p>I am a student of University of Rajshahi.</p>
+<div class="wrapper">
 
-    <h2>Education</h2>
-    <ul>
-        <li>
-            <b>College:</b> Dhaka City College
-        </li>
-        <li>
-            <b>University:</b> University of Rajshahi <br>
-            <i>BSc in Computer Science and Engineering</i>
-        </li>
-    </ul>
+  <header class="hero">
+    <h1>G.M Nasir <span>Uddin</span></h1>
+    <p>CSE student at the University of Rajshahi,</p>
+  </header>
 
-    <hr>
+  <section class="section">
+    <div class="section-label">
+      <h2>Education</h2>
+    </div>
 
-    <h2>Skills</h2>
-    <ul>
-        <li>HTML</li>
-    </ul>
+    <div class="edu-card">
+      <div class="edu-type">College</div>
+      <div class="edu-name">Dhaka City College</div>
+    </div>
 
-    <hr>
+    <div class="edu-card">
+      <div class="edu-type">University</div>
+      <div class="edu-name">University of Rajshahi</div>
+      <div class="edu-degree">BSc in Computer Science and Engineering</div>
+    </div>
+  </section>
 
-    <h2>Contact</h2>
-    <ul>
-        <li><b>Email:</b> gmnuhridoy@gmail.com</li>
-    </ul>
+  <section class="section">
+    <div class="section-label">
+      <h2>Skills</h2>
+    </div>
 
-    <hr>
+    <div class="skills-grid">
+      <div class="skill-tag"><span class="dot"></span>HTML</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">
+      <h2>Contact</h2>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">gmnuhridoy@gmail.com</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Designed &amp; built by <span>G.M Nasir Uddin</span> &mdash; 2025
+</footer>
 
 </body>
-</html>,this is my html code,I want to enhance this website ,Like I want add some features to it using css
-```
+</html>
