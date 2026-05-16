@@ -1,59 +1,51 @@
-body{
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-.container{
-    width: 70%;
-    margin: 50px auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+/* Main title */
+h1 {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 20px;
 }
 
-h1{
-    color: #1e3a8a;
-    text-align: center;
+/* Each topic section */
+.topic {
+    margin-bottom: 30px;
+}
+
+/* Topic heading */
+.topic h2 {
+    font-size: 20px;
+    font-weight: normal;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
     margin-bottom: 10px;
 }
 
-p{
-    text-align: center;
-    font-size: 18px;
-    color: #444;
+/* Problem links (CSES style list) */
+.topic a {
+    display: block;
+    padding: 6px 0;
+    text-decoration: none;
+    color: #1a1a1a;
 }
 
-h2{
+/* Hover effect */
+.topic a:hover {
     color: #2563eb;
-    border-left: 5px solid #2563eb;
-    padding-left: 10px;
-    margin-top: 30px;
 }
 
-ul{
-    list-style-type: square;
-    padding-left: 25px;
+/* Back button */
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #2563eb;
+    text-decoration: none;
 }
 
-li{
-    margin-bottom: 10px;
-    font-size: 17px;
-}
-
-hr{
-    border: none;
-    height: 1px;
-    background-color: #ddd;
-    margin-top: 25px;
-}
-
-b{
-    color: #111;
-}
-
-i{
-    color: #555;
+.back:hover {
+    text-decoration: underline;
 }
