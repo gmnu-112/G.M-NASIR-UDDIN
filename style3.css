@@ -26,7 +26,8 @@ h2 {
 
 /* Problem list */
 ol {
-    margin-bottom: 30px;
+    padding-left: 30px;
+    margin-bottom: 20px;
 }
 
 li {
