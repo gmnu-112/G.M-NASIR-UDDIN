@@ -25,7 +25,7 @@ h2 {
 }
 
 /* Problem list */
-ul {
+ol {
     list-style: none;
     margin-bottom: 30px;
 }
@@ -40,7 +40,7 @@ a {
     font-weight: 500;
 }
 
-ul li a {
+ol li a {
     display: block;
     background: #ffffff;
     padding: 14px 18px;
@@ -50,7 +50,7 @@ ul li a {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-ul li a:hover {
+ol li a:hover {
     background: #eef4ff;
     border-color: #b9c9ea;
     transform: translateY(-2px);
