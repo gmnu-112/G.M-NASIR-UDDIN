@@ -1,51 +1,108 @@
-.container {
-    max-width: 800px;
+/* Global */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f6f7fb;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+/* Center container feel */
+body > * {
+    max-width: 900px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 10px 20px;
 }
 
-/* Main title */
+/* Headings */
 h1 {
-    font-size: 28px;
-    font-weight: normal;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 32px;
+    letter-spacing: 1px;
 }
 
-/* Each topic section */
-.topic {
-    margin-bottom: 30px;
+h2 {
+    margin-top: 25px;
+    border-left: 5px solid #4f46e5;
+    padding-left: 10px;
+    color: #333;
 }
 
-/* Topic heading */
-.topic h2 {
-    font-size: 20px;
-    font-weight: normal;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 6px;
-    margin-bottom: 10px;
+/* Paragraph */
+p {
+    text-align: center;
+    color: #555;
 }
 
-/* Problem links (CSES style list) */
-.topic a {
-    display: block;
+/* Lists */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
     padding: 6px 0;
-    text-decoration: none;
-    color: #1a1a1a;
 }
 
-/* Hover effect */
-.topic a:hover {
+/* Links */
+a {
+    text-decoration: none;
     color: #2563eb;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #1e40af;
+}
+
+/* Horizontal line */
+hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 25px 0;
+}
+
+/* Topic box (problemset style card) */
+.topic {
+    background: white;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Problem list styling */
+.topic ol {
+    padding-left: 20px;
+}
+
+.topic li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.topic li:last-child {
+    border-bottom: none;
+}
+
+/* Problem hover effect */
+.topic li:hover {
+    background-color: #f1f5ff;
+    border-radius: 6px;
 }
 
 /* Back button */
 .back {
     display: inline-block;
     margin-top: 20px;
-    color: #2563eb;
-    text-decoration: none;
+    color: white;
+    background: #4f46e5;
+    padding: 8px 14px;
+    border-radius: 6px;
 }
 
 .back:hover {
-    text-decoration: underline;
+    background: #3730a3;
 }
